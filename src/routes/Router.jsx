@@ -6,6 +6,10 @@ import Portfolio from "../views/Portfolio";
 import Services from "../views/Services";
 import Contact from "../views/Contact";
 import WebSites from "../views/WebSites";
+import UIService from "../views/UIService";
+import ConsultingService from "../views/ConsultingService";
+import Modernisation from "../views/Modernisation";
+import AIService from "../views/AIService";
 
 const Router = () => {
   const routes = useRoutes([
@@ -21,6 +25,22 @@ const Router = () => {
         {
           path: "web-sites",
           element: <WebSites />,
+        },
+        {
+          path: "ui-ux-design",
+          element: <UIService />,
+        },
+        {
+          path: "consulting",
+          element: <ConsultingService />,
+        },
+        {
+          path: "modernisation",
+          element: <Modernisation />,
+        },
+        {
+          path: "ai-solutions",
+          element: <AIService />,
         },
       ],
     },
