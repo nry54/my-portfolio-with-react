@@ -8,7 +8,6 @@ const Services = () => {
       <div className="services-navigation">
         <nav className="services-nav">
           <NavLink
-            to="web-sites"
             className={({ isActive }) =>
               isActive ? "service-link active" : "service-link"
             }
@@ -16,7 +15,6 @@ const Services = () => {
             Web Site Development
           </NavLink>
           <NavLink
-            to="ui-ux-design"
             className={({ isActive }) =>
               isActive ? "service-link active" : "service-link"
             }
@@ -24,7 +22,6 @@ const Services = () => {
             Dynamic and Responsive Interfaces
           </NavLink>
           <NavLink
-            to="consulting"
             className={({ isActive }) =>
               isActive ? "service-link active" : "service-link"
             }
@@ -32,7 +29,6 @@ const Services = () => {
             API Entegrasyonu
           </NavLink>
           <NavLink
-            to="modernisation"
             className={({ isActive }) =>
               isActive ? "service-link active" : "service-link"
             }
@@ -40,7 +36,6 @@ const Services = () => {
             Modernisation of the Existing System
           </NavLink>
           <NavLink
-            to="ai-solutions"
             className={({ isActive }) =>
               isActive ? "service-link active" : "service-link"
             }
@@ -48,10 +43,6 @@ const Services = () => {
             Artificial Intelligence
           </NavLink>
         </nav>
-      </div>
-
-      <div className="services-content">
-        <Outlet />
       </div>
     </>
   );
