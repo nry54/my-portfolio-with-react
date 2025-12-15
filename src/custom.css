@@ -63,10 +63,9 @@
 }
 
 .sidebar-nav a:hover{
-    background-color: rgba(52, 152, 219, 0.2);
-    color: #ffffff;
-    padding-left: 15px;
-    transform: translateX(5px); /* Add horizontal shift on hover */
+  background-color: rgba(52, 152, 219, 0.2);
+  color: #ffffff;
+  padding-left: 15px;
 }
 
 .sidebar-nav a:visited {
