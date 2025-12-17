@@ -1,5 +1,18 @@
 let typedInstances = [];
 
+// Define the routes for navigation
+const routes = [
+  { path: "/", label: "Home" },
+  { path: "/about", label: "About" },
+  { path: "/resume", label: "Resume" },
+  { path: "/portfolio", label: "Portfolio" },
+  { path: "/services", label: "Services" },
+  { path: "/contact", label: "Contact" },
+];
+
+// Current route index for wheel navigation
+let currentRouteIndex = 0;
+
 function initTyped() {
   const typedElements = document.querySelectorAll("span.typed");
 
@@ -56,6 +69,34 @@ function typeText(instance) {
   setTimeout(() => typeText(instance), delay);
 }
 
+// Mouse wheel navigation function
+function handleWheelNavigation(event) {
+  // Prevent default scrolling behavior
+  event.preventDefault();
+
+  // Determine direction (positive = down, negative = up)
+  const delta = event.deltaY;
+
+  if (delta > 0) {
+    // Scroll down - go to next page
+    currentRouteIndex = (currentRouteIndex + 1) % routes.length;
+  } else {
+    // Scroll up - go to previous page
+    currentRouteIndex = (currentRouteIndex - 1 + routes.length) % routes.length;
+  }
+
+  // Navigate to the new route
+  navigateToRoute(routes[currentRouteIndex].path);
+}
+
+// Navigation function that works with React Router
+function navigateToRoute(path) {
+  // Navigate to the route using React Router
+  window.history.pushState({}, "", path);
+  // Dispatch a popstate event to notify React Router // The content changes without the page being refreshed
+  window.dispatchEvent(new PopStateEvent("popstate"));
+}
+
 // Initialize when DOM is loaded
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initTyped);
@@ -65,3 +106,11 @@ if (document.readyState === "loading") {
 
 // Re-initialize when page content changes (for SPA navigation)
 window.addEventListener("load", initTyped);
+
+// Add mouse wheel event listener for navigation
+document.addEventListener("wheel", handleWheelNavigation, { passive: false });
+
+// Listen for popstate events (back/forward buttons)
+window.addEventListener("popstate", function () {
+  // This will trigger React Router to update
+});
