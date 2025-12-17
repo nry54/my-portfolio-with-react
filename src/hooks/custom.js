@@ -10,6 +10,9 @@ const routes = [
   { path: "/contact", label: "Contact" },
 ];
 
+// Cache the routes length for better performance
+const routesLength = routes.length;
+
 // Current route index for wheel navigation
 let currentRouteIndex = 0;
 
@@ -79,10 +82,10 @@ function handleWheelNavigation(event) {
 
   if (delta > 0) {
     // Scroll down - go to next page
-    currentRouteIndex = (currentRouteIndex + 1) % routes.length;
+    currentRouteIndex = (currentRouteIndex + 1) % routesLength;
   } else {
     // Scroll up - go to previous page
-    currentRouteIndex = (currentRouteIndex - 1 + routes.length) % routes.length;
+    currentRouteIndex = (currentRouteIndex - 1 + routesLength) % routesLength;
   }
 
   // Navigate to the new route
